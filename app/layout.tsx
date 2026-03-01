@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Navbar/page";
+import Particles from "@/components/Particles";
 
 const quicksand = Quicksand({
- variable: "--font-quicksand",
+  variable: "--font-quicksand",
   subsets: ["latin"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,10 +21,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${quicksand.variable}  antialiased`}
-      >
-        {children}
+      <body className={`${quicksand.variable}  antialiased`}>
+        {/* BACKGROUND LAYER: Tetap di belakang saat scroll */}
+        <div className="fixed inset-0 z-0 overflow-hidden bg-slate-950">
+          <div style={{ width: "100%", height: "600px", position: "relative" }}>
+            <Particles
+              particleColors={["#2fe9e6"]}
+              particleCount={200}
+              particleSpread={10}
+              speed={0.1}
+              particleBaseSize={100}
+              moveParticlesOnHover
+              alphaParticles={false}
+              disableRotation={false}
+              pixelRatio={1}
+            />
+          </div>
+        </div>
+
+        {/* NAVBAR: Pastikan z-index lebih tinggi dari background */}
+        <nav className="relative z-50">
+          <Navbar />
+        </nav>
+        <main className="relative z-10 min-h-screen px-10 text-white">
+          {children}
+        </main>
       </body>
     </html>
   );

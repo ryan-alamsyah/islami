@@ -1,7 +1,7 @@
 'use client';
 import Card from "@/components/Card";
 import { useFetchApi } from "../api/useFetchApi";
-import { useEffect } from "react";
+
 
 
 
@@ -16,6 +16,7 @@ const HeroPage = () => {
   }
 
   return (
+    <section className="min-h-screen border-b border-white/10 flex items-center justify-center mt-8">
     <div className="flex flex-col items-center justify-center py-10 gap-8">
       {/* Search Bar Section */}
       <div className="w-full max-w-md px-4">
@@ -57,14 +58,14 @@ const HeroPage = () => {
 
         {/* 3. State: Success / Mapping */}
         {!isLoading && doaSunnah.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap gap-6 justify-center">
             {doaSunnah.map((item) => (
               <Card 
                 key={item.id} 
                 title={item.nama}
                 grup={item.grup}
                 hadis={item.tentang}
-                url={`/PenjelasanPage/${item.id}`}
+                url={'/penjelasan/'}
               />
             ))}
           </div>
@@ -73,6 +74,7 @@ const HeroPage = () => {
 
      
     </div>
+    </section>
   );
 }
 
