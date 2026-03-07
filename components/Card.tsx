@@ -19,7 +19,7 @@ const Card = ({ title, grup, hadis, url }: CardProps) => {
           </p>
         </div>
         <div className="h-24 overflow-hidden mt-2">
-          <p className="text-xs text-slate-500  ">{hadis}</p>
+          <p className="text-xs text-slate-400  ">{hadis}</p>
         </div>
         <Link href={url} className="bg-emerald-500 hover:bg-emerald-600 text-black flex gap-2 w-full p-1 justify-center items-center rounded-2xl mt-2"
         >

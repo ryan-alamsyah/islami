@@ -1,6 +1,7 @@
 'use client';
 import Card from "@/components/Card";
 import { useFetchApi } from "../api/useFetchApi";
+import { useEffect } from "react";
 
 
 
@@ -8,13 +9,15 @@ import { useFetchApi } from "../api/useFetchApi";
 const HeroPage = () => {
   const { fetchApi, doaSunnah, isLoading } = useFetchApi();
 
-  
- 
-  const HandleDoa = () => {
-    fetchApi();
-    console.log(doaSunnah);
-  }
 
+  const HandleUpdateApi  = () => {
+    fetchApi();
+  }
+  useEffect(() => {
+    fetchApi();
+  }, [])
+ 
+ 
   return (
     <section className="min-h-screen border-b border-white/10 flex items-center justify-center mt-8">
     <div className="flex flex-col items-center justify-center py-10 gap-8">
@@ -35,7 +38,7 @@ const HeroPage = () => {
           Bahasa Indonesia
         </h2>
       </div>
-       <button className="mt-8 px-6 py-2 border border-slate-700 text-slate-400 hover:text-white hover:border-emerald-500 rounded-full transition-all text-sm" onClick={HandleDoa}>
+       <button className="mt-8 px-6 py-2 border border-slate-700 text-slate-400 hover:text-white hover:border-emerald-500 rounded-full transition-all text-sm"onClick={HandleUpdateApi}>
         Muat Ulang API
       </button>
 
@@ -65,7 +68,7 @@ const HeroPage = () => {
                 title={item.nama}
                 grup={item.grup}
                 hadis={item.tentang}
-                url={'/penjelasan/'}
+                url={`/doa/${item.id}`}
               />
             ))}
           </div>

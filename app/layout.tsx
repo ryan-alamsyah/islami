@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar/page";
 import Particles from "@/components/Particles";
+import { Amiri } from 'next/font/google';
 
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
-  subsets: ["latin"],
+export const amiri = Amiri({
+  subsets: ['latin', 'arabic'], // Sesuaikan subset yang diperlukan
+  weight: ['400', '700'],       // Sesuaikan bobot font yang diperlukan
+  style: ['normal', 'italic'],  // Sesuaikan gaya yang diperlukan
+  variable: '--font-amiri',     // Definisikan variabel CSS
+  display: 'swap',
 });
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${quicksand.variable}  antialiased`}>
+      <body className={`${amiri.variable}  antialiased`}>
         {/* BACKGROUND LAYER: Tetap di belakang saat scroll */}
         <div className="fixed inset-0 z-0 overflow-hidden bg-slate-950">
           <div style={{ width: "100%", height: "600px", position: "relative" }}>
