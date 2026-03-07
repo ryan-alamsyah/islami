@@ -13,7 +13,7 @@ export default async function DoaPage({ params }: Props) {
 
 
   return (
-    <div className="min-h-screen flex pt-20 pb-10 mx-auto justify-center overflow-auto">
+    <div className="min-h-screen flex pt-20 pb-10 justify-center overflow-y-auto px-8 md-px-4 ">
       <div>
        
           <Link href={"/HeroPage"} className="flex gap-2 mb-4">
@@ -22,7 +22,7 @@ export default async function DoaPage({ params }: Props) {
           </Link>
         
 
-        <div className="rounded-2xl border-l-4 border-l-emerald-400 border border-white/30 w-220">
+        <div className="rounded-2xl border-l-4 border-l-emerald-400 border border-white/30  md:120">
           <div className="bg-emerald-600/30  backdrop-blur-md border border-white/40 shadow-xl rounded-t-2xl p-4 flex items-center gap-4">
             <div className="bg-emerald-200/50  backdrop-blur-md inline-flex p-2 rounded-4xl">
               <BookOpenText />
@@ -31,10 +31,10 @@ export default async function DoaPage({ params }: Props) {
             <h1>{data.nama}</h1>
           </div>
           <div className="p-4">
-            <div className="flex justify-center mb-4">
+            <div className="flex  justify-center mb-4">
               <p className="text-emerald-600 font-bold text-lg">Teks Arab</p>
             </div>
-            <div className=" border p-4 rounded-lg border-white/30 bg-gray-500/30">
+            <div className=" border p-4 rounded-lg border-white/30 bg-gray-500/30 flex-wrap">
               <p
                 dir="rtl"
                 style={{ fontFamily: "var(--font-amiri)" }}
