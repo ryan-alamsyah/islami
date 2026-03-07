@@ -1,13 +1,18 @@
 'use client';
 import Card from "@/components/Card";
 import { useFetchApi } from "../api/useFetchApi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
 
 const HeroPage = () => {
   const { fetchApi, doaSunnah, isLoading } = useFetchApi();
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const filltered = doaSunnah.filter((doa) =>
+  doa.nama.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
 
   const HandleUpdateApi  = () => {
@@ -26,6 +31,8 @@ const HeroPage = () => {
         <input 
           className="w-full bg-slate-800 text-white p-3 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all" 
           placeholder="Cari doa harian..." 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
@@ -39,7 +46,7 @@ const HeroPage = () => {
         </h2>
       </div>
        <button className="mt-8 px-6 py-2 border border-slate-700 text-slate-400 hover:text-white hover:border-emerald-500 rounded-full transition-all text-sm"onClick={HandleUpdateApi}>
-        Muat Ulang API
+        Muat Ulang
       </button>
 
       {/* Content Section */}
@@ -60,9 +67,9 @@ const HeroPage = () => {
         )}
 
         {/* 3. State: Success / Mapping */}
-        {!isLoading && doaSunnah.length > 0 && (
+        {!isLoading && filltered.length > 0 && (
           <div className="flex flex-wrap gap-6 justify-center">
-            {doaSunnah.map((item) => (
+            {filltered.map((item) => (
               <Card 
                 key={item.id} 
                 title={item.nama}

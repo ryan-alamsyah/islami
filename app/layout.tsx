@@ -45,9 +45,11 @@ export default function RootLayout({
         </div>
 
         {/* NAVBAR: Pastikan z-index lebih tinggi dari background */}
+        {/* 
         <nav className="relative z-50">
           <Navbar />
         </nav>
+        */}
         <main className="relative z-10  text-white">
           {children}
         </main>
