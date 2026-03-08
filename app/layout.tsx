@@ -2,17 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./Navbar/page";
 import Particles from "@/components/Particles";
-import { Amiri } from 'next/font/google';
+import { Amiri } from "next/font/google";
+import FooterComponent from "@/components/footer";
 
 export const amiri = Amiri({
-  subsets: ['latin', 'arabic'], // Sesuaikan subset yang diperlukan
-  weight: ['400', '700'],       // Sesuaikan bobot font yang diperlukan
-  style: ['normal', 'italic'],  // Sesuaikan gaya yang diperlukan
-  variable: '--font-amiri',     // Definisikan variabel CSS
-  display: 'swap',
+  subsets: ["latin", "arabic"], // Sesuaikan subset yang diperlukan
+  weight: ["400", "700"], // Sesuaikan bobot font yang diperlukan
+  style: ["normal", "italic"], // Sesuaikan gaya yang diperlukan
+  variable: "--font-amiri", // Definisikan variabel CSS
+  display: "swap",
 });
-
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -44,15 +43,10 @@ export default function RootLayout({
           </div>
         </div>
 
-        {/* NAVBAR: Pastikan z-index lebih tinggi dari background */}
-        {/* 
-        <nav className="relative z-50">
-          <Navbar />
-        </nav>
-        */}
-        <main className="relative z-10  text-white">
-          {children}
-        </main>
+        <main className="relative z-10  text-white">{children}</main>
+        <footer className="relative">
+          <FooterComponent />
+        </footer>
       </body>
     </html>
   );
