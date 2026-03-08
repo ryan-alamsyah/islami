@@ -23,7 +23,7 @@ const Card = ({ title, grup, hadis, url }: CardProps) => {
         </div>
         <Link href={url} className="bg-emerald-500 hover:bg-emerald-600 text-black flex gap-2 w-full p-1 justify-center items-center rounded-2xl mt-2"
         >
-          <BookOpen size={14} /> Baca
+          <BookOpen size={14} /> Detail
         </Link>
       </div>
     </>

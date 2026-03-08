@@ -13,7 +13,7 @@ export default async function DoaPage({ params }: Props) {
 
 
   return (
-    <div className="min-h-screen flex pt-20 pb-10 justify-center overflow-y-auto px-4">
+    <div className="min-h-screen flex pt-10 pb-10 justify-center overflow-y-auto md:px-4 px-2">
       <div>
        
           <Link href={"/Home"} className="flex gap-2 mb-4">
@@ -22,7 +22,7 @@ export default async function DoaPage({ params }: Props) {
           </Link>
         
 
-        <div className="rounded-2xl border-l-4 border-l-emerald-400 border border-white/30 w-96 md:w-146">
+        <div className="rounded-2xl border-l-4 border-l-emerald-400 border border-white/30 w-96 md:w-146 ">
           <div className="bg-emerald-600/30  backdrop-blur-md border border-white/40 shadow-xl rounded-t-2xl p-4 flex items-center gap-4">
             <div className="bg-emerald-200/50  backdrop-blur-md inline-flex p-2 rounded-4xl">
               <BookOpenText />
