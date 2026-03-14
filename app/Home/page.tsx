@@ -13,6 +13,7 @@ const HeroPage = () => {
 
   const HandleUpdateApi = () => {
     fetchApi();
+    console.log(doaSunnah)
   };
   useEffect(() => {
     fetchApi();
@@ -33,7 +34,7 @@ const HeroPage = () => {
 
         {/* Header Section */}
         <div className="text-center">
-          <h1 className="text-emerald-300 text-4xl md:text-5xl font-bold mb-2">
+          <h1 className="text-sky-300 text-4xl md:text-5xl font-bold mb-2">
             Kumpulan Doa Harian
           </h1>
         
