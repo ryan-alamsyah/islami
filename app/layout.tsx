@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import localFont from 'next/font/local'
 import Particles from "@/components/Particles";
 import { Amiri } from "next/font/google";
 import FooterComponent from "@/components/footer";
 
-export const amiri = Amiri({
-  subsets: ["latin", "arabic"], // Sesuaikan subset yang diperlukan
-  weight: ["400", "700"], // Sesuaikan bobot font yang diperlukan
-  style: ["normal", "italic"], // Sesuaikan gaya yang diperlukan
+export const amiri = localFont({
+  src : "../public/fontUts.otf",
+  // Sesuaikan gaya yang diperlukan
   variable: "--font-amiri", // Definisikan variabel CSS
   display: "swap",
 });
