@@ -40,7 +40,7 @@ const HeroPage = () => {
         
         </div>
         <button
-          className="mt-8 px-6 py-2 border border-slate-700 text-slate-400 hover:text-white hover:border-emerald-500 rounded-full transition-all text-sm"
+          className="mt-8 px-6 py-2 border border-slate-700 text-slate-400 hover:text-white hover:border-sky-500 rounded-full transition-all text-sm"
           onClick={HandleUpdateApi}
         >
           Muat Ulang
@@ -51,8 +51,8 @@ const HeroPage = () => {
           {/* 1. State: Loading */}
           {isLoading && (
             <div className="flex flex-col items-center gap-4 py-10">
-              <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-emerald-400 animate-pulse">
+              <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-sky-400 animate-pulse">
                 Memuat data doa...
               </p>
             </div>

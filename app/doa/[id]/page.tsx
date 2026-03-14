@@ -15,9 +15,9 @@ async function DoaContent({ id }: { id: string }) {
   const data = res.data.data;
 
   return (
-    <div className="rounded-2xl border-l-4 border-l-emerald-400 border border-white/30 w-96 md:w-146 ">
-      <div className="bg-emerald-600/30 backdrop-blur-md border border-white/40 shadow-xl rounded-t-2xl p-4 flex items-center gap-4">
-        <div className="bg-emerald-200/50 backdrop-blur-md inline-flex p-2 rounded-4xl">
+    <div className="rounded-2xl border-l-4 border-l-sky-400 border border-white/30 w-96 md:w-146 ">
+      <div className="bg-sky-600/30 backdrop-blur-md border border-white/40 shadow-xl rounded-t-2xl p-4 flex items-center gap-4">
+        <div className="bg-sky-200/50 backdrop-blur-md inline-flex p-2 rounded-4xl">
           <BookOpenText />
         </div>
         <h1>{data.nama}</h1>
@@ -25,7 +25,7 @@ async function DoaContent({ id }: { id: string }) {
       
       {/* Bagian Arab */}
       <div className="p-4">
-        <p className="text-emerald-600 font-bold text-lg mb-4 text-center">Teks Arab</p>
+        <p className="text-sky-600 font-bold text-lg mb-4 text-center">Teks Arab</p>
         <div className="border p-4 rounded-lg border-white/30 bg-gray-500/30">
           <p dir="rtl" style={{ fontFamily: "var(--font-amiri)" }} className="text-2xl text-right leading-loose md:leading-[2.5]">
             {data.ar}
@@ -36,13 +36,13 @@ async function DoaContent({ id }: { id: string }) {
       {/* Bagian Terjemahan & Hadis */}
       <div className="p-4 space-y-8">
         <div>
-          <p className="text-emerald-600 mb-4 font-bold text-lg">Transliterasi</p>
+          <p className="text-sky-600 mb-4 font-bold text-lg">Transliterasi</p>
           <div className="border p-4 rounded-lg border-white/30 bg-gray-500/30">
             <p className="text-slate-400 italic">{data.tr}</p>
           </div>
         </div>
         <div>
-          <p className="text-emerald-600 mb-4 font-bold text-lg">Terjemahan</p>
+          <p className="text-sky-600 mb-4 font-bold text-lg">Terjemahan</p>
           <div className="border p-4 rounded-lg border-white/30 bg-gray-500/30">
             <p className="text-slate-400">{data.idn}</p>
           </div>
@@ -59,7 +59,7 @@ export default async function DoaPage({ params }: Props) {
   return (
     <div className="min-h-screen flex pt-10 pb-10 justify-center overflow-y-auto md:px-4 px-2 text-white">
       <div>
-        <Link href={"/Home"} className="flex gap-2 mb-4 hover:text-emerald-400 transition-colors">
+        <Link href={"/Home"} className="inline-flex px-2 py-1 rounded gap-2 mb-4 hover:bg-sky-800 transition-colors bg-sky-500 ">
           <ArrowLeft />
           Kembali
         </Link>
