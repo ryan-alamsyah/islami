@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import Particles from "@/components/Particles";
 import { Amiri } from "next/font/google";
 import FooterComponent from "@/components/footer";
+import Navbar from "./Navbar/page";
 
 export const amiri = localFont({
   src : "../public/fontUts.otf",
@@ -41,7 +42,11 @@ export default function RootLayout({
             />
           </div>
         </div>
-
+        {/* 
+        <header>
+          <Navbar />
+        </header>
+*/}
         <main className="relative z-10  text-white">{children}</main>
         <footer className="relative">
           <FooterComponent />

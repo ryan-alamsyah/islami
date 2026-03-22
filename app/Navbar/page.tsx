@@ -7,8 +7,8 @@ const Navbar = () => {
             <div className="flex ">
                 <h1 className='text-white'>Quran</h1>
                 <div className='flex gap-2 justify-center'>
-                    <Link href="/HeroPage" className='text-white'>Home</Link>
-                    <Link href="/penjelasan" className='text-white'>About</Link>
+                    <Link href="/Home" className='text-white'>Home</Link>
+                    <Link href="/hadist" className='text-white'>About</Link>
                 </div>
             </div>
             </nav>

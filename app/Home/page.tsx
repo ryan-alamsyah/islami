@@ -1,85 +1,43 @@
-"use client";
-import Card from "@/components/Card";
-import { useFetchApi } from "../api/useFetchApi";
-import { useEffect, useState } from "react";
+import { axiosInstance } from "../lib/Axios";
+import DoaList from "./DoaList";
+import { Suspense } from "react";
+import Loading from "../doa/[id]/loading";
 
-const HeroPage = () => {
-  const { fetchApi, doaSunnah, isLoading } = useFetchApi();
-  const [searchQuery, setSearchQuery] = useState("");
+// Fungsi Fetching (Terjadi di Server)
+async function getData() {
+  try {
+    const res = await axiosInstance.get("/doa");
+    // Pastikan ini me-return array [{}, {}]
+    return res.data.data;
+  } catch (error) {
+    console.error("Gagal ambil data:", error);
+    return [];
+  }
+}
 
-  const filltered = doaSunnah.filter((doa) =>
-    doa.nama.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
-
-  const HandleUpdateApi = () => {
-    fetchApi();
-    console.log(doaSunnah)
-  };
-  useEffect(() => {
-    fetchApi();
-  }, []);
+const HeroPage = async () => {
+  const data = await getData();
 
   return (
-    <section className="min-h-screen border-b border-white/10 flex items-center justify-center mt-8">
-      <div className="flex flex-col items-center justify-center py-10 gap-8">
-        {/* Search Bar Section */}
-        <div className="w-full max-w-md px-4">
-          <input
-            className="w-full bg-slate-800 text-white p-3 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
-            placeholder="Cari doa harian..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-
+    <section className="min-h-screen border-b border-white/10 flex flex-col items-center mt-8">
+      <div className="flex flex-col items-center justify-center py-10 gap-8 w-full">
+        
         {/* Header Section */}
         <div className="text-center">
           <h1 className="text-sky-300 text-4xl md:text-5xl font-bold mb-2">
             Kumpulan Doa Harian
           </h1>
-        
+          <p className="text-slate-400">Temukan doa harian sesuai kebutuhanmu</p>
         </div>
-        <button
-          className="mt-8 px-6 py-2 border border-slate-700 text-slate-400 hover:text-white hover:border-sky-500 rounded-full transition-all text-sm"
-          onClick={HandleUpdateApi}
-        >
-          Muat Ulang
-        </button>
 
         {/* Content Section */}
-        <div className="w-full  px-6 h-min-screen">
-          {/* 1. State: Loading */}
-          {isLoading && (
-            <div className="flex flex-col items-center gap-4 py-10">
-              <div className="w-10 h-10 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
-              <p className="text-sky-400 animate-pulse">
-                Memuat data doa...
-              </p>
-            </div>
-          )}
-
-          {/* 2. State: Empty */}
-          {!isLoading && filltered.length === 0 && (
-            <div className="text-center py-20 border-2 border-dashed border-slate-800 rounded-3xl">
-              <p className="text-gray-500">Belum ada doa yang ditemukan.</p>
-            </div>
-          )}
-
-          {/* 3. State: Success / Mapping */}
-          {!isLoading && filltered.length > 0 && (
-            <div className="flex flex-wrap gap-6 justify-center">
-              {filltered.map((item) => (
-                <Card
-                  key={item.id}
-                  title={item.nama}
-                  grup={item.grup}
-                  hadis={item.tentang}
-                  url={`/doa/${item.id}`}
-                />
-              ))}
-            </div>
-          )}
+        <div className="w-full px-6">
+          {/* Kita bungkus DoaList dengan Suspense jika ingin streaming */}
+          <Suspense fallback={<Loading />}>
+            <DoaList initialData={data} />
+          </Suspense>
         </div>
+
       </div>
     </section>
   );

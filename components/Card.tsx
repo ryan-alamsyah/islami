@@ -18,10 +18,10 @@ const Card = ({ title, grup, hadis, url }: CardProps) => {
             {grup}
           </p>
         </div>
-        <div className="h-24 overflow-hidden mt-2">
+        <div className="h-full overflow-hidden ">
           <p className="text-xs text-slate-400  ">{hadis}</p>
         </div>
-        <Link href={url} className="bg-sky-500 hover:bg-sky-600 text-black flex gap-2 w-full p-1 justify-center items-center rounded-2xl mt-2"
+        <Link href={url} className="bg-sky-500 hover:bg-sky-600 text-black flex gap-2 w-full p-1 justify-center items-center rounded-2xl"
         >
           <BookOpen size={14} /> Detail
         </Link>
