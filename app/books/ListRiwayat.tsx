@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Card from "@/components/Card";
+import CardList from "@/components/CardList";
+
 
 interface Hadis {
   id: string;
@@ -13,7 +15,7 @@ interface Hadis {
   available: string;
 }
 
-export default function HadisList({ initialData = [] }: { initialData: Hadis[] }) {
+export default function ListRiwayat({ initialData = [] }: { initialData: Hadis[] }) {
   const [searchQuery, setSearchQuery] = useState("");
   
 
@@ -25,14 +27,12 @@ export default function HadisList({ initialData = [] }: { initialData: Hadis[] }
   return (
     <div className="flex flex-col items-center w-full gap-8">
       {/* Search Input */}
-      <div className="w-full max-w-md px-4">
-        <input
-          type="text"
-          placeholder="Cari nama doa..."
-          className="w-full px-5 py-3 rounded-full bg-slate-900/50 border border-white/10 text-white focus:outline-none focus:border-sky-500 transition-all shadow-lg backdrop-blur-sm"
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
+       <div>
+          <h1 className="text-sky-300 text-4xl md:text-5xl font-bold mb-2">
+            Kumpulan Hadis
+          </h1>
+        </div>
+     
 
     
 
@@ -41,16 +41,13 @@ export default function HadisList({ initialData = [] }: { initialData: Hadis[] }
         {filtered.length > 0 ? (
           
           filtered.map((item) => (
-            
-            <Card
+
+            <CardList
               key={item.id}
               title={item.name}
-              grup={item.grup}
-              hadis={item.available}
-              url={`${item.id}?range=11-20`}
-            />
-
-            
+              hadis={`Jumlah: ${item.available} Hadis`}
+              url={`/books/${item.id}?range=1-100`}
+            />   
           ))
         ) : (
           <div className="text-center py-20 border-2 border-dashed border-slate-800 rounded-3xl w-full max-w-2xl">

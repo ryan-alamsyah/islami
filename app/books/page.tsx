@@ -1,7 +1,7 @@
 import Card from "@/components/Card";
 import { AxiosHadist } from "../lib/AxiosHadist";
 import { Suspense } from "react";
-import HadisList from "./HadisList";
+import ListRiwayat from "./ListRiwayat";
 import Loading from "../doa/[id]/loading";
 
 const getHadist = async () => {
@@ -21,11 +21,12 @@ const HadisPage = async () => {
   console.log(data);
   return (
     <>
-      <div className="min-h-screen w-full">
-        <div className="w-full px-6">
+      <div className="min-h-screen w-full pt-20">
+       
+        <div className="w-full px-6 ">
           {/* Kita bungkus DoaList dengan Suspense jika ingin streaming */}
           <Suspense fallback={<Loading />}>
-            <HadisList initialData={data} />
+            <ListRiwayat initialData={data} />
           </Suspense>
         </div>
       </div>

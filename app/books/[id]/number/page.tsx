@@ -1,21 +1,21 @@
-// app/doa/[id]/page.tsx
-import { axiosInstance } from "../.././lib/Axios";
-import Link from "next/link";
+import { AxiosHadist } from "@/app/lib/AxiosHadist"
 import { BookOpenText, ArrowLeft } from "lucide-react";
 import { Suspense } from "react";
-import Loading from "./loading";
+import Link from "next/link";
+import Loading from "@/app/doa/[id]/loading";
 
 interface Props {
-  params: Promise<{ id: string }>;
+    params: Promise<{id: string, number: number}>
 }
 
-// 1. Komponen terpisah untuk Fetch Data
-async function DoaContent({ id }: { id: string }) {
-  const res = await axiosInstance.get(`/doa/${id}`);
-  const data = res.data.data;
 
-  return (
-    <div className="rounded-2xl border-l-4 border-l-sky-400 border border-white/30 w-96 md:w-146 ">
+const DetailRiwayat = async ({ id, number }: { id: string; number: number }) => {
+    const res = await AxiosHadist.get(`/books/${id}/${number}`)
+    const data = res.data.contents;
+
+    return (
+     
+        <div className="rounded-2xl border-l-4 border-l-sky-400 border border-white/30 w-96 md:w-146 ">
       <div className="bg-sky-600/30 backdrop-blur-md border border-white/40 shadow-xl rounded-t-2xl p-4 flex items-center gap-4">
         <div className="bg-sky-200/50 backdrop-blur-md inline-flex p-2 rounded-4xl">
           <BookOpenText />
@@ -50,11 +50,12 @@ async function DoaContent({ id }: { id: string }) {
       </div>
     </div>
   );
+        
 }
 
-// 2. Main Page tetap sinkron untuk render Layout secepat mungkin
-export default async function DoaPage({ params }: Props) { 
-  const { id } = await params;
+
+export default async function DetailHadisPage({ params }: Props) { 
+  const { id, number } = await params;
 
   return (
     <div className="min-h-screen flex pt-10 pb-10 justify-center overflow-y-auto md:px-4 px-2 text-white">
@@ -67,7 +68,7 @@ export default async function DoaPage({ params }: Props) {
           <ArrowLeft />
           Kembali
         </Link>
-          <DoaContent id={id} />
+          <DetailRiwayat id={id} number={number} />
         </Suspense>
       </div>
     </div>
