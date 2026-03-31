@@ -14,7 +14,7 @@ interface Hadith {
 }
 
 export default async function HadisDetail({ params }: Props) {
-  const { id, number } = await params;
+  const { id } = await params;
 
   try {
     const res = await AxiosHadist(`/books/${id}?range=1-100`);
@@ -27,7 +27,7 @@ export default async function HadisDetail({ params }: Props) {
           <CardList 
           key={item.number}
           title={''}
-          url={`/books/${id}/${number}`}
+          url={`/books/${item.id}/${''}`}
           hadis={`Hadis Nomor ke- ${item.number} Riwayat ${id} `}
           
           />
