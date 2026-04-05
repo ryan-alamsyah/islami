@@ -13,11 +13,12 @@ interface Hadith {
   id: string;
 }
 
-export default async function HadisDetail({ params }: Props) {
+export default async function HadisDetail({ params, searchParams }: Props) {
   const { id } = await params;
+  const range = searchParams.range || "1-100"
 
   try {
-    const res = await AxiosHadist(`/books/${id}?range=1-100`);
+    const res = await AxiosHadist(`/books/${id}?range${range}`);
     const data = res.data;
 
     return (

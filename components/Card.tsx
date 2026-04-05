@@ -12,7 +12,7 @@ type CardProps = {
 const Card = ({  title, grup, hadis, url }: CardProps) => {
   return (
     <>
-      <div className="h-96 w-96 shadow-md border border-sky-800 rounded-2xl p-4 gap-4 flex flex-col">
+      <div className="h-96 w-96 shadow-md border border-sky-800 rounded-2xl p-4 gap-4 flex flex-col hover:border-sky-500">
         <div className="bg-white/10 backdrop-blur-lg flex  flex-col gap-2 p-4">
           <h1 className="text-md">{title}</h1>
          

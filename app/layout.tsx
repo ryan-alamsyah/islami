@@ -42,11 +42,11 @@ export default function RootLayout({
             />
           </div>
         </div>
-      
+      {/* 
         <header>
           <Navbar />
         </header>
-
+*/}
         <main className="relative z-10  text-white">{children}</main>
         <footer className="relative">
           <FooterComponent />
